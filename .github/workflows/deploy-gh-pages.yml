@@ -37,7 +37,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Build
-        run: pnpm build
+        run: pnpm build --base-href /mac-zero/
 
       - name: Setup GitHub Pages
         uses: actions/configure-pages@v5

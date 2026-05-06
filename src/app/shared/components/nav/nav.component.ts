@@ -179,13 +179,12 @@ import { RouterModule } from '@angular/router';
 export class NavComponent {
   private readonly platformId = inject(PLATFORM_ID);
   readonly isMenuOpen = signal(false);
-  readonly isDarkMode = signal(false);
+  readonly isDarkMode = signal(true);
 
   constructor() {
     if (isPlatformBrowser(this.platformId)) {
       const stored = localStorage.getItem('theme');
-      const isDark =
-        stored === 'dark' || (!stored && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      const isDark = stored ? stored === 'dark' : true;
       this.isDarkMode.set(isDark);
       this.applyTheme(isDark);
     }
